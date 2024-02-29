@@ -16,7 +16,7 @@ import {
 
 const Header = () => {
   const [collapsed, setCollapsed] = useState(true);
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading ] = useAuthState(auth);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 

@@ -19,7 +19,7 @@ const Dashboard = () => {
         console.log("Error occured when fetching books", err);
       }
     })();
-  }, [user]);
+  }, [user, slots]);
 
   const getSlots = async () => {
     setSlots([
