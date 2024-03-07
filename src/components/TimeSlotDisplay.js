@@ -3,7 +3,7 @@ import React from 'react';
 const TimeSlotDisplay = ({ data }) => {
   return (
     <div>
-      {data.map(company => (
+      {data && data.map(company => (
         <div key={company.companyId}>
           <h2>{`Company: ${company.companyId}`}</h2>
           {company.dates.map(date => (

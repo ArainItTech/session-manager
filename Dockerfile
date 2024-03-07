@@ -3,17 +3,19 @@
 # Pull the base image
 FROM node:21.6.2-alpine
 
-# Set the working directory
-WORKDIR /slot-manager
+# set working directory
+# RUN mkdir /usr/src/app
+#copy all files from current directory to docker
+COPY . /usr/src/app
+COPY ./node_modules /usr/src/app
 
-# Copy app dependencies to container
-COPY ./package*.json ./
+WORKDIR /usr/src/app
 
-# Add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+# install and cache app dependencies
+RUN yarn
 
-# Install dependencies
-RUN npm install
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
-# Deploy app for local development
-CMD npm start --host 0.0.0.0 --port 3000 --disableHostCheck true
+# start app
+CMD ["npm", "start"]
