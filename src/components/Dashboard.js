@@ -13,7 +13,6 @@ const Dashboard = () => {
     (async () => {
       try {
         await getSlots();
-        console.log(slots);
       } catch (err) {
         console.log("Error occured when fetching books", err);
       }
@@ -26,7 +25,7 @@ const Dashboard = () => {
 
 
 // Add a new document with a generated id.
-const docRef = await addDoc(collection(db, "slots-day"), {"sessions":[
+await addDoc(collection(db, "slots-day"), {"sessions":[
   {
     companyId: "company1",
     dates: [
